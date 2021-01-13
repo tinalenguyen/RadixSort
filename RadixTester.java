@@ -14,18 +14,24 @@ public class RadixTester{
     System.out.println(test.length(y));
     System.out.println(test.length(z));
 
-    MyLinkedList tester0 = new MyLinkedList();
+    SortableLinkedList tester0 = new SortableLinkedList();
     MyLinkedList tester1 = new MyLinkedList();
 
-    MyLinkedList[] bucket = {tester1};
+  //  SortableLinkedList[] bucket = {tester1};
 
-    tester0.add("3");
-    tester0.add("9");
-    tester1.add("56");
-    tester1.add("-45");
+    tester0.add(3);
+    tester0.add(9);
+    tester0.add(56);
+    tester0.add(45);
+    tester0.add(345);
+    tester0.add(44);
+    tester0.add(45);
+    tester0.add(48);
+    tester0.add(47);
+    tester0.add(46);
 
-    Radix.merge(tester0, bucket);
-    System.out.println("Merge Test: " + tester0.toString());
+    Radix.radixSortSimple(tester0);
+    System.out.println("simple sort test: " + tester0.toString());
 
 
   }
