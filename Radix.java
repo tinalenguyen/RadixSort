@@ -16,9 +16,13 @@ public class Radix{
       return ans+1;
     }
 
-    public static void merge(MyLinkedList original, MyLinkedList[] buckets){
+    public static void merge(SortableLinkedList original, SortableLinkedList[] buckets){
 //merge all the linked lists in the bucket array into your original linked list
-      String filler = "";
+      int i = 0;
+      while (i<buckets.length){
+        original.extend(buckets[i]);
+        i++;
+      }
     }
 
 
