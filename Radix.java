@@ -12,7 +12,8 @@ public class Radix{
 
     public static int length(int n){
 //return the number of digits in n
-      return (int)(Math.log(n));
+      int ans = (int) (Math.log10(n));
+      return ans+1;
     }
 
     public static void merge(MyLinkedList original, MyLinkedList[] buckets){
