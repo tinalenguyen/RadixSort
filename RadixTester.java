@@ -21,17 +21,17 @@ public class RadixTester{
 
     tester0.add(3);
     tester0.add(9);
-    tester0.add(56);
+    tester0.add(-56);
     tester0.add(45);
-    tester0.add(345);
-    tester0.add(44);
+    tester0.add(0);
+    tester0.add(-44);
     tester0.add(45);
     tester0.add(48);
-    tester0.add(47);
+    tester0.add(-47);
     tester0.add(46);
 
-    Radix.radixSortSimple(tester0);
-    System.out.println("simple sort test: " + tester0.toString());
+    Radix.radixSort(tester0);
+    System.out.println("radix sort test: " + tester0.toString());
 
 
   }
