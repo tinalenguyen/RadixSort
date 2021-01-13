@@ -59,7 +59,7 @@ public class Radix{
 
         }
         SortableLinkedList[] buckets = {bucket1,bucket2,bucket3,bucket4,bucket5,bucket6,bucket7,bucket8,bucket9};
-        Radix.merge(bucket0, buckets);
+        merge(bucket0, buckets);
         //clear data
         int h = data.size()-1;
         while (h >=0){
@@ -71,4 +71,34 @@ public class Radix{
     }
   }
 
+
+    public static void radixSort(SortableLinkedList data){
+//sorts any interger value
+        radixSortSimple(data);
+        SortableLinkedList negBucket = new SortableLinkedList();
+        SortableLinkedList posBucket = new SortableLinkedList();
+
+        for (int i = 0 ; i < data.size() ; i++){
+          if (data.get(i) < 0){
+            negBucket.add(data.get(i)*-1);
+        }
+        else if (data.get(i) >=0) posBucket.add(data.get(i));
+        }
+
+        radixSortSimple(negBucket);
+        radixSortSimple(posBucket);
+
+        int o = data.size()-1;
+        while (o >=0){
+          data.remove(o);
+          o--;
+        }
+        //data is empty now
+        for (int e = negBucket.size()-1 ; e >=0 ; e--){
+          data.add(negBucket.get(e)*-1);
+
+        }
+        data.extend(posBucket);
+
+    }
 }
