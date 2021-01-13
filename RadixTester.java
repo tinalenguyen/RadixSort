@@ -13,6 +13,21 @@ public class RadixTester{
     System.out.println(test.length(x));
     System.out.println(test.length(y));
     System.out.println(test.length(z));
+
+    MyLinkedList tester0 = new MyLinkedList();
+    MyLinkedList tester1 = new MyLinkedList();
+
+    MyLinkedList[] bucket = {tester1};
+
+    tester0.add("3");
+    tester0.add("9");
+    tester1.add("56");
+    tester1.add("-45");
+
+    Radix.merge(tester0, bucket);
+    System.out.println("Merge Test: " + tester0.toString());
+
+
   }
 
 
