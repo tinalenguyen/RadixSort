@@ -45,18 +45,21 @@ public class Radix{
         SortableLinkedList bucket8 = new SortableLinkedList();
         SortableLinkedList bucket9 = new SortableLinkedList();
 
-        for (int j = 0 ; j < data.size() ; j++){
-          if (nth(data.get(j),i) == 0) bucket0.add(data.get(j));
-          else if (nth(data.get(j),i) == 1) bucket1.add(data.get(j));
-          else if (nth(data.get(j),i) == 2) bucket2.add(data.get(j));
-          else if (nth(data.get(j),i) == 3) bucket3.add(data.get(j));
-          else if (nth(data.get(j),i) == 4) bucket4.add(data.get(j));
-          else if (nth(data.get(j),i) == 5) bucket5.add(data.get(j));
-          else if (nth(data.get(j),i) == 6) bucket6.add(data.get(j));
-          else if (nth(data.get(j),i) == 7) bucket7.add(data.get(j));
-          else if (nth(data.get(j),i) == 8) bucket8.add(data.get(j));
-          else bucket9.add(data.get(j));
-
+        int j = data.size()-1 ;
+        while (j >=0){
+      //  for (int j = 0 ; j < data.size() ; j++){
+          if (nth(data.get(0),i) == 0) bucket0.add(data.get(0));
+          else if (nth(data.get(0),i) == 1) bucket1.add(data.get(0));
+          else if (nth(data.get(0),i) == 2) bucket2.add(data.get(0));
+          else if (nth(data.get(0),i) == 3) bucket3.add(data.get(0));
+          else if (nth(data.get(0),i) == 4) bucket4.add(data.get(0));
+          else if (nth(data.get(0),i) == 5) bucket5.add(data.get(0));
+          else if (nth(data.get(0),i) == 6) bucket6.add(data.get(0));
+          else if (nth(data.get(0),i) == 7) bucket7.add(data.get(0));
+          else if (nth(data.get(0),i) == 8) bucket8.add(data.get(0));
+          else bucket9.add(data.get(0));
+          data.remove(0);
+          j--;
         }
         SortableLinkedList[] buckets = {bucket1,bucket2,bucket3,bucket4,bucket5,bucket6,bucket7,bucket8,bucket9};
         merge(bucket0, buckets);
@@ -78,21 +81,24 @@ public class Radix{
         SortableLinkedList negBucket = new SortableLinkedList();
         SortableLinkedList posBucket = new SortableLinkedList();
 
+
         for (int i = 0 ; i < data.size() ; i++){
-          if (data.get(i) < 0){
-            negBucket.add(data.get(i)*-1);
+          if (data.get(0) < 0){
+            negBucket.add(data.get(0)*-1);
         }
-        else if (data.get(i) >=0) posBucket.add(data.get(i));
+        else if (data.get(0) >=0) posBucket.add(data.get(0));
+        data.remove(0);
         }
 
         radixSortSimple(negBucket);
         radixSortSimple(posBucket);
 
-        int o = data.size()-1;
-        while (o >=0){
-          data.remove(o);
-          o--;
-        }
+    //    int o = data.size()-1;
+    //    while (o >=0){
+
+    //      data.remove(o);
+  //        o--;
+  //      }
         //data is empty now
         for (int e = negBucket.size()-1 ; e >=0 ; e--){
           data.add(negBucket.get(e)*-1);
