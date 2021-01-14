@@ -5,7 +5,6 @@ public class Radix{
 //get nth digit of an int, where 0 is the ones column, 1 is the tens
       int temp =  (int) (n / Math.pow(10,col) );
       int ans = (int) ( temp % 10);
-    //  int ans = (int) Math.round( (n / (Math.pow(10,col) ) ) % (Math.pow(10,col) ) );
       return ans;
 
     }
@@ -32,7 +31,6 @@ public class Radix{
         for (int c = 0 ; c < buckets.length ; c++) {
           buckets[c] = new SortableLinkedList();
         }
-    //  for (int i = 0 ; i < longestLength ; i++){
         int i = 0 ;
         while (i < longestLength){
         while (0 < data.size()){
