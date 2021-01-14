@@ -27,50 +27,26 @@ public class Radix{
 
     public static void radixSortSimple(SortableLinkedList data){
 //sorts non negative integer values / assume there are no negative values
-      int longestLength = 0;
+      int longestLength = 1;
+      SortableLinkedList[] buckets = new SortableLinkedList[10];
+        for (int c = 0 ; c < buckets.length ; c++) {
+          buckets[c] = new SortableLinkedList();
+        }
+    //  for (int i = 0 ; i < longestLength ; i++){
+        int i = 0 ;
+        while (i < longestLength){
+        while (0 < data.size()){
+          if (length(data.get(0)) > longestLength && i==0) {
+            longestLength = length(data.get(0));
+          }
+          int bucketer = nth(data.get(0), i);
+          buckets[bucketer].add(data.get(0));
 
-      for (int i = 0 ; i < data.size() ; i++){
-        if (length(data.get(i)) > longestLength ) longestLength = length(data.get(i));
-      }
-
-      for (int i = 0 ; i < longestLength ; i++){
-        SortableLinkedList bucket0 = new SortableLinkedList();
-        SortableLinkedList bucket1 = new SortableLinkedList();
-        SortableLinkedList bucket2 = new SortableLinkedList();
-        SortableLinkedList bucket3 = new SortableLinkedList();
-        SortableLinkedList bucket4 = new SortableLinkedList();
-        SortableLinkedList bucket5 = new SortableLinkedList();
-        SortableLinkedList bucket6 = new SortableLinkedList();
-        SortableLinkedList bucket7 = new SortableLinkedList();
-        SortableLinkedList bucket8 = new SortableLinkedList();
-        SortableLinkedList bucket9 = new SortableLinkedList();
-
-        int j = data.size()-1 ;
-        while (j >=0){
-      //  for (int j = 0 ; j < data.size() ; j++){
-          if (nth(data.get(0),i) == 0) bucket0.add(data.get(0));
-          else if (nth(data.get(0),i) == 1) bucket1.add(data.get(0));
-          else if (nth(data.get(0),i) == 2) bucket2.add(data.get(0));
-          else if (nth(data.get(0),i) == 3) bucket3.add(data.get(0));
-          else if (nth(data.get(0),i) == 4) bucket4.add(data.get(0));
-          else if (nth(data.get(0),i) == 5) bucket5.add(data.get(0));
-          else if (nth(data.get(0),i) == 6) bucket6.add(data.get(0));
-          else if (nth(data.get(0),i) == 7) bucket7.add(data.get(0));
-          else if (nth(data.get(0),i) == 8) bucket8.add(data.get(0));
-          else bucket9.add(data.get(0));
           data.remove(0);
-          j--;
+
         }
-        SortableLinkedList[] buckets = {bucket1,bucket2,bucket3,bucket4,bucket5,bucket6,bucket7,bucket8,bucket9};
-        merge(bucket0, buckets);
-        //clear data
-        int h = data.size()-1;
-        while (h >=0){
-          data.remove(h);
-          h--;
-        }
-        //combine for sorting again
-        data.extend(bucket0);
+        merge(data, buckets);
+        i++;
     }
   }
 
