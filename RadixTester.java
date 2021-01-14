@@ -26,11 +26,12 @@ public class RadixTester{
     tester0.add(0);
     tester0.add(-44);
     tester0.add(45);
-    tester0.add(48);
+    tester0.add(-48);
     tester0.add(-47);
     tester0.add(46);
 
     Radix.radixSort(tester0);
+
     System.out.println("radix sort test: " + tester0.toString());
 
 
