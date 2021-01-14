@@ -53,34 +53,33 @@ public class Radix{
 
     public static void radixSort(SortableLinkedList data){
 //sorts any interger value
-        radixSortSimple(data);
         SortableLinkedList negBucket = new SortableLinkedList();
         SortableLinkedList posBucket = new SortableLinkedList();
 
 
         for (int i = 0 ; i < data.size() ; i++){
-          if (data.get(0) < 0){
-            negBucket.add(data.get(0)*-1);
+          if (data.get(i) < 0){
+            negBucket.add(data.get(i)*-1);
         }
-        else if (data.get(0) >=0) posBucket.add(data.get(0));
-        data.remove(0);
+        else if (data.get(i) >=0) posBucket.add(data.get(i));
+
         }
 
         radixSortSimple(negBucket);
         radixSortSimple(posBucket);
 
-    //    int o = data.size()-1;
-    //    while (o >=0){
+        for (int p = data.size()-1 ; p >=0; p--){
 
-    //      data.remove(o);
-  //        o--;
-  //      }
+          data.remove(p);
+
+        }
+
         //data is empty now
         for (int e = negBucket.size()-1 ; e >=0 ; e--){
           data.add(negBucket.get(e)*-1);
 
         }
-        data.extend(posBucket);
+       data.extend(posBucket);
 
     }
 }
